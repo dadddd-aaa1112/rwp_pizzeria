@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('product_id')->nullable()->constrained('products')->cascadeOnUpdate()->nullOnDelete();
             $table->unsignedInteger('count')->nullable();
-            $table->double('price')->nullable();
             $table->timestamps();
         });
     }
