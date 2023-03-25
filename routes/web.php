@@ -13,27 +13,37 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [App\Http\Controllers\MainController::class, 'index']);
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/basket', [App\Http\Controllers\BasketController::class, 'index'])->name('basket_index');
+    Route::post('/basket', [App\Http\Controllers\BasketController::class, 'storeBasket'])->name('basket_store');
+
+    Route::post('/basket/order_store', [App\Http\Controllers\OrderController::class, 'storeOrder'])->name('order_store');
+
 });
 
 Auth::routes();
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => 'auth', 'middleware' => 'admin'], function () {
+    Route::group(['prefix' => 'admin'], function () {
+        Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-    Route::group(['prefix' => 'products'], function () {
-        Route::get('/', [App\Http\Controllers\Admin\ProductController::class, 'index'])->name('product_index');
+        Route::group(['prefix' => 'products'], function () {
+            Route::get('/', [App\Http\Controllers\Admin\ProductController::class, 'index'])->name('product_index');
+            Route::get('/add', [App\Http\Controllers\Admin\ProductController::class, 'addProduct'])->name('product_add');
+            Route::post('/add', [App\Http\Controllers\Admin\ProductController::class, 'storeProduct'])->name('product_store');
 
-    });
+        });
 
-    Route::group(['prefix' => 'buyers'], function () {
-        Route::get('/', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('user_index');
+        Route::group(['prefix' => 'buyers'], function () {
+            Route::get('/', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('user_index');
 
-    });
+        });
 
-    Route::group(['prefix' => 'orders'], function () {
-        Route::get('/', [App\Http\Controllers\Admin\OrderController::class, 'index'])->name('order_index');
+        Route::group(['prefix' => 'orders'], function () {
+            Route::get('/', [App\Http\Controllers\Admin\OrderController::class, 'index'])->name('order_index');
 
+        });
     });
 });

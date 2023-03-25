@@ -1,4 +1,5 @@
-<div class="offcanvas offcanvas-start bg-info" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+
+<div class="offcanvas offcanvas-start bg-warning" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title fw-bolder" id="offcanvasExampleLabel">Админ панель</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
@@ -19,7 +20,7 @@
                                 <a class="nav-link" href="{{route('product_index')}}">Все продукты</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Добавить</a>
+                                <a class="nav-link" href="{{route('product_add')}}">Добавить</a>
                             </li>
                         </ul>
                     </div>
