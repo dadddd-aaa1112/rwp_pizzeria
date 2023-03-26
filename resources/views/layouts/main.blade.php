@@ -22,7 +22,7 @@
     <nav class="navbar navbar-expand-md navbar-light bg-warning shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+                <img style="width: 100px; height: 50px;" src="{{asset('for_main/logo.png')}}">
 
             </a>
 
@@ -62,13 +62,13 @@
                         @else
                             @if(auth()->user()->email === 'admin@test.ru')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">Перейти в админ панель</a>
+                                <a class="nav-link fw-bold text-white" href="{{ route('home') }}">Перейти в админ панель</a>
                             </li>
                             @endif
                         @endif
 
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle fw-bold" href="#" role="button"
                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
@@ -77,7 +77,7 @@
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    Выйти
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

@@ -42,7 +42,7 @@ class ProductController extends Controller
         $data = $request->validated();
 
         if (!empty($data['image'])) {
-            $name = md5(Carbon::now() . '_' . $data['image']->getClientOriginalName()) . '_' . $data['image']->getClientOriginalExtension();
+            $name = md5(Carbon::now() . '_' . $data['image']->getClientOriginalName()) . '.' . $data['image']->getClientOriginalExtension();
             $filePath = Storage::disk('public')->putFileAs('/images', $data['image'], $name);
             $data['image'] = url('/storage/' . $filePath);
         }
