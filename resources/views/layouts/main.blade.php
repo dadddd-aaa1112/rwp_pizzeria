@@ -41,19 +41,24 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
-
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-bold" href="{{ route('contact') }}">Контакты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-bold me-5" href="{{ route('about') }}">О нас</a>
+                    </li>
 
                     <!-- Authentication Links -->
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">Войти</a>
                             </li>
                         @endif
 
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">Зарегистрироваться</a>
                             </li>
                         @endif
                     @else
@@ -61,11 +66,14 @@
                         @if (str_contains(\Illuminate\Support\Facades\URL::current(), 'admin'))
                         @else
                             @if(auth()->user()->email === 'admin@test.ru')
-                            <li class="nav-item">
-                                <a class="nav-link fw-bold text-white" href="{{ route('home') }}">Перейти в админ панель</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link fw-bold text-white" href="{{ route('home') }}">Перейти в админ
+                                        панель</a>
+                                </li>
                             @endif
                         @endif
+
+
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle fw-bold" href="#" role="button"
@@ -97,8 +105,8 @@
                             </svg>
                             <h5 class="text-danger fw-bolder">
                                 @if(auth()->check() && count(\App\Models\Basket::where('user_id', auth()->user()->id)->get()) > 0)
-                                {{count(\App\Models\Basket::where('user_id', auth()->user()->id)->get())}}
-                                    @endif
+                                    {{count(\App\Models\Basket::where('user_id', auth()->user()->id)->get())}}
+                                @endif
                             </h5>
                         </div>
                     </a>
@@ -114,5 +122,6 @@
     </main>
 
 </div>
+@include('footer.index')
 </body>
 </html>

@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\MainController::class, 'index']);
+Route::get('/contact', [App\Http\Controllers\MainController::class, 'contact'])->name('contact');
+Route::get('/about', [App\Http\Controllers\MainController::class, 'about'])->name('about');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/basket', [App\Http\Controllers\BasketController::class, 'index'])->name('basket_index');
