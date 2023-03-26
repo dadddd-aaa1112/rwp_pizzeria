@@ -15,13 +15,14 @@
                     <img src="{{$product->image}}" class="card-img-top" alt="{{$product->title}}">
                     <div class="card-body">
                         <h5 class="card-title">{{$product->title}}</h5>
-                        <p class="card-text">{{$product->prices->price }}руб </p>
+                        <p class="card-text">{{$product->price }}руб </p>
                         <h5 class="card-text">{{$product->categories->title }} </h5>
 
                         <input type="hidden" name="title" value="{{$product->title}}">
                         <input type="hidden" name="image" value="{{$product->image}}">
-                        <input type="hidden" name="price_id" value="{{$product->price_id}}">
+                        <input type="hidden" name="price" value="{{$product->price}}">
                         <input type="hidden" name="category_id" value="{{$product->category_id}}">
+                        <input type="hidden" name="product_id" value="{{$product->id}}">
                         <button type="submit" class="btn btn-outline-success">Добавить в корзину</button>
                     </div>
                 </div>

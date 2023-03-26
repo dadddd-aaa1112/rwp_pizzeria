@@ -21,7 +21,7 @@ class ProductFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(1),
-            'price_id' => Price::get()->random()->id,
+            'price' => rand(0, 10000)/10,
             'category_id' => Category::get()->random()->id,
         ];
     }

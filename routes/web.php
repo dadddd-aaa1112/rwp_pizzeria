@@ -18,8 +18,11 @@ Route::get('/', [App\Http\Controllers\MainController::class, 'index']);
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/basket', [App\Http\Controllers\BasketController::class, 'index'])->name('basket_index');
     Route::post('/basket', [App\Http\Controllers\BasketController::class, 'storeBasket'])->name('basket_store');
+    Route::post('/basket/continue', [App\Http\Controllers\BasketController::class, 'continueOrder'])->name('basket_continue');
 
-    Route::post('/basket/order_store', [App\Http\Controllers\OrderController::class, 'storeOrder'])->name('order_store');
+
+    Route::get('/basket/order_store', [App\Http\Controllers\OrderController::class, 'storeOrder'])->name('order_store');
+    Route::post('/basket/order_destroy', [App\Http\Controllers\OrderController::class, 'destroyOrder'])->name('order_destroy');
 
 });
 

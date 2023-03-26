@@ -20,7 +20,7 @@ $i=1;
             <tr>
                 <th scope="row">{{$i++}}</th>
                 <td>{{$product->title}}</td>
-                <td>{{$product->prices->price}}</td>
+                <td>{{$product->price}}</td>
                 <td>{{$product->categories->title}}</td>
             </tr>
         @endforeach

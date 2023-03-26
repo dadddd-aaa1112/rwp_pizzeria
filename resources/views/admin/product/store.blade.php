@@ -17,12 +17,14 @@
 
         <div class="mb-3">
             <label for="price" class="form-label">Цена</label>
-            <select class="form-select" name="price_id" id="price">
-                <option value="val" >Выберите цену продукта</option>
-                @foreach($prices as $price)
-                    <option value="{{$price->id}}">{{$price->price}}</option>
-                @endforeach
-            </select>
+            <input name="price"
+                   min="0.00"
+                   step="any"
+                   type="number"
+                   class="form-control"
+                   id="price"
+                   rows="3"
+            >
         </div>
 
         <div class="mb-3">

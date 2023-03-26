@@ -26,9 +26,9 @@ $i=1;
                 <td>{{$order->users->name}} {{$order->users->email}}</td>
                 <td>{{$order->products->title}}</td>
                 <td>{{$order->products->categories->title}}</td>
-                <td>{{$order->products->prices->price}}</td>
+                <td>{{$order->products->price}}</td>
                 <td>{{$order->count}}</td>
-                <td>{{$order->count * $order->products->prices->price}}</td>
+                <td>{{$order->count * $order->products->price}}</td>
             </tr>
         @endforeach
 

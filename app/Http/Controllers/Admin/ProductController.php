@@ -51,7 +51,7 @@ class ProductController extends Controller
             'title' => $data['title'],
         ], [
             'image' => $data['image'] ?? null,
-            'price_id' => $data['price_id'],
+            'price' => $data['price'],
             'category_id' => $data['category_id'],
         ]);
 
@@ -71,12 +71,12 @@ class ProductController extends Controller
     public function addProduct(): Application|View|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $categories = Category::all();
-        $prices = Price::orderBy('price')->get();
+
 
         return view('admin.product.store', [
             'title' => 'Добавить продукт',
             'categories' => $categories,
-            'prices' => $prices,
+
         ]);
     }
 }
