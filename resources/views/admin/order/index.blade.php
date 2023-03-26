@@ -14,7 +14,6 @@ $i=1;
             <th scope="col">Категория</th>
             <th scope="col">Цена</th>
             <th scope="col">Количество</th>
-            <th scope="col">Сумма</th>
             <th scope="col">Общая сумма заказа</th>
         </tr>
         </thead>
@@ -28,7 +27,7 @@ $i=1;
                 <td>{{$order->products->categories->title}}</td>
                 <td>{{$order->products->price}}</td>
                 <td>{{$order->count}}</td>
-                <td>{{$order->count * $order->products->price}}</td>
+                <td>{{$order->sum}}</td>
             </tr>
         @endforeach
 

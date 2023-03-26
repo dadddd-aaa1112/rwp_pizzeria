@@ -59,6 +59,7 @@ class BasketController extends Controller
                 'user_id' => $request->user_id,
                 'count' => $count,
                 'product_id' => $id,
+                'sum' => $result,
             ]);
 
             $basket = Basket::where('user_id', $request->user_id)
